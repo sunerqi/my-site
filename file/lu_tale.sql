@@ -5,7 +5,7 @@
  Source Server Type    : MariaDB
  Source Server Version : 50556
  Source Host           : 118.25.36.41
- Source Database       : lu_tale
+ Source Database       : my_site
 
  Target Server Type    : MariaDB
  Target Server Version : 50556
