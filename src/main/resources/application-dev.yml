@@ -13,7 +13,7 @@ spring:
           driver-class-name: com.mysql.jdbc.Driver
           #基本属性
           url: jdbc:mysql://127.0.0.1:3306/my_site?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
-          username: admin
+          username: root
           password: 123456
           #配置初始化大小/最小/最大
           initial-size: 1
@@ -50,7 +50,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: cn.luischen.model
+  type-aliases-package: cn.sunhl.model
 
 
 #pagehelper
@@ -63,7 +63,7 @@ pagehelper:
 
 logging:
   level:
-    cn.luischen.dao : DEBUG
+    cn.sunhl.dao : DEBUG
 
 swagger:
   show: true
