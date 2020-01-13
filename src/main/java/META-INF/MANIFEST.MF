@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Main-Class: cn.sunhl.MySiteApplication
+Class-Path: qiniu-java-sdk-7.2.11.jar swagger-annotations-1.5.3.jar page
+ helper-5.1.4.jar joda-time-2.9.9.jar tomcat-embed-websocket-8.5.29.jar 
+ emoji-java-3.2.0.jar druid-1.1.9.jar spring-boot-starter-2.0.1.RELEASE.
+ jar spring-boot-starter-web-2.0.1.RELEASE.jar mybatis-3.4.6.jar mybatis
+ -spring-boot-autoconfigure-1.3.2.jar slf4j-api-1.7.25.jar spring-boot-s
+ tarter-tomcat-2.0.1.RELEASE.jar spring-boot-starter-aop-2.0.1.RELEASE.j
+ ar pagehelper-spring-boot-starter-1.2.5.jar okhttp-3.9.1.jar spring-aop
+ -5.0.5.RELEASE.jar spring-context-support-5.0.5.RELEASE.jar tomcat-embe
+ d-el-8.5.29.jar aspectjweaver-1.8.13.jar tomcat-embed-core-8.5.29.jar p
+ agehelper-spring-boot-autoconfigure-1.2.5.jar jsqlparser-1.0.jar log4j-
+ api-2.10.0.jar spring-expression-5.0.5.RELEASE.jar jackson-core-2.9.5.j
+ ar jackson-datatype-jsr310-2.9.5.jar springfox-spring-web-2.2.2.jar log
+ 4j-1.2.17.jar snakeyaml-1.19.jar jackson-datatype-jdk8-2.9.5.jar happy-
+ dns-java-0.1.6.jar spring-boot-starter-logging-2.0.1.RELEASE.jar spring
+ -jdbc-5.0.5.RELEASE.jar slf4j-log4j12-1.7.25.jar spring-core-5.0.5.RELE
+ ASE.jar springfox-spi-2.2.2.jar swagger-models-1.5.3.jar log4j-to-slf4j
+ -2.10.0.jar thymeleaf-3.0.9.RELEASE.jar springfox-swagger2-2.2.2.jar sp
+ ringfox-swagger-ui-2.2.2.jar spring-plugin-metadata-1.2.0.RELEASE.jar c
+ lassmate-1.3.4.jar spring-boot-starter-jdbc-2.0.1.RELEASE.jar httpcore-
+ 4.4.9.jar validation-api-2.0.1.Final.jar druid-spring-boot-starter-1.1.
+ 9.jar jackson-datatype-joda-2.9.5.jar commonmark-ext-gfm-tables-0.8.0.j
+ ar jackson-module-parameter-names-2.9.5.jar thymeleaf-spring5-3.0.9.REL
+ EASE.jar spring-boot-starter-thymeleaf-2.0.1.RELEASE.jar xercesImpl-2.1
+ 1.0.jar mybatis-spring-1.3.2.jar hibernate-validator-6.0.9.Final.jar sp
+ ring-webmvc-5.0.5.RELEASE.jar HikariCP-2.7.8.jar mapstruct-1.0.0.CR1.ja
+ r springfox-core-2.2.2.jar springfox-schema-2.2.2.jar jackson-annotatio
+ ns-2.9.0.jar springfox-swagger-common-2.2.2.jar spring-web-5.0.5.RELEAS
+ E.jar okio-1.13.0.jar logback-classic-1.2.3.jar spring-hateoas-0.24.0.R
+ ELEASE.jar commonmark-0.8.0.jar spring-boot-autoconfigure-2.0.1.RELEASE
+ .jar javax.annotation-api-1.3.2.jar aspectjrt-1.8.13.jar httpclient-4.5
+ .5.jar thymeleaf-extras-java8time-3.0.1.RELEASE.jar spring-jcl-5.0.5.RE
+ LEASE.jar jackson-databind-2.9.5.jar mysql-connector-java-5.1.46.jar lo
+ gback-core-1.2.3.jar spring-tx-5.0.5.RELEASE.jar unbescape-1.1.5.RELEAS
+ E.jar commons-codec-1.11.jar xml-apis-1.4.01.jar spring-boot-starter-ca
+ che-2.0.1.RELEASE.jar spring-boot-2.0.1.RELEASE.jar jul-to-slf4j-1.7.25
+ .jar cos_api-5.2.4.jar attoparser-2.0.4.RELEASE.jar spring-boot-starter
+ -json-2.0.1.RELEASE.jar json-20140107.jar jboss-logging-3.3.2.Final.jar
+  commons-lang3-3.4.jar spring-context-5.0.5.RELEASE.jar spring-beans-5.
+ 0.5.RELEASE.jar gson-2.8.0.jar mybatis-spring-boot-starter-1.3.2.jar sp
+ ring-plugin-core-1.2.0.RELEASE.jar nekohtml-1.9.22.jar guava-18.0.jar
+
