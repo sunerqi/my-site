@@ -15,8 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.StringUtils;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +33,9 @@ import java.io.IOException;
 @Api("登录相关接口")
 @Controller
 @RequestMapping(value = "/admin")
-public class AuthController extends BaseController{
+public class AuthController extends BaseController {
 
-    private static final Logger LOGGER = LogManager.getLogger(AuthController.class);
+    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     @Autowired
     private UserService userService;
@@ -45,7 +45,7 @@ public class AuthController extends BaseController{
 
     @ApiOperation("跳转登录页")
     @GetMapping(value = "/login")
-    public String login(){
+    public String login() {
         return "admin/login";
     }
 
@@ -57,17 +57,17 @@ public class AuthController extends BaseController{
             HttpServletResponse response,
             @ApiParam(name = "username", value = "用户名", required = true)
             @RequestParam(name = "username", required = true)
-            String username,
+                    String username,
             @ApiParam(name = "password", value = "密码", required = true)
             @RequestParam(name = "password", required = true)
-            String password,
+                    String password,
             @ApiParam(name = "remeber_me", value = "记住我", required = false)
             @RequestParam(name = "remeber_me", required = false)
-            String remeber_me
-    ){
+                    String remeber_me
+    ) {
 
-        String ip= IPKit.getIpAddrByRequest(request); // 获取ip并过滤登录时缓存的bug
-        Integer error_count = cache.hget("login_error_count",ip);
+        String ip = IPKit.getIpAddrByRequest(request); // 获取ip并过滤登录时缓存的bug
+        Integer error_count = cache.hget("login_error_count", ip);
         try {
             UserDomain userInfo = userService.login(username, password);
             request.getSession().setAttribute(WebConst.LOGIN_SESSION_KEY, userInfo);
@@ -76,17 +76,17 @@ public class AuthController extends BaseController{
             }
             logService.addLog(LogActions.LOGIN.getAction(), null, request.getRemoteAddr(), userInfo.getUid());
         } catch (Exception e) {
-            LOGGER.error(e.getMessage());
+            logger.error(e.getMessage());
             error_count = null == error_count ? 1 : error_count + 1;
             if (error_count > 3) {
                 return APIResponse.fail("您输入密码已经错误超过3次，请10分钟后尝试");
             }
-            cache.hset("login_error_count", ip,error_count, 10 * 60); // 加入ip的过滤
+            cache.hset("login_error_count", ip, error_count, 10 * 60); // 加入ip的过滤
             String msg = "登录失败";
             if (e instanceof BusinessException) {
                 msg = e.getMessage();
             } else {
-                LOGGER.error(msg, e);
+                logger.error(msg, e);
             }
             return APIResponse.fail(msg);
         }
@@ -113,7 +113,7 @@ public class AuthController extends BaseController{
             response.sendRedirect("/admin/login");
         } catch (IOException e) {
             e.printStackTrace();
-            LOGGER.error("注销失败", e);
+            logger.error("注销失败", e);
         }
     }
 

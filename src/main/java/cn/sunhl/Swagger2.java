@@ -33,12 +33,13 @@ public class Swagger2 {
                 .paths(PathSelectors.any())
                 .build();
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Luis Site Swagger Restful API")
-                .description("更多Spring Boot相关文章请关注：https://sunhl.cn/")
-                .termsOfServiceUrl("https://sunhl.cn/")
-                .contact("Luis chen")
+                .title("二七 Site Swagger Restful API")
+                .description("更多Spring Boot相关文章请关注：https://www.sunhl.cn/")
+                .termsOfServiceUrl("https://www.sunhl.cn/")
+                .contact("二七")
                 .version("1.0")
                 .build();
     }

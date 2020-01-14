@@ -1,11 +1,14 @@
 package cn.sunhl.utils;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,35 +18,38 @@ import java.util.UUID;
 /**
  * @Author: sunhailong
  * @Date: 2020/1/13 下午2:33
- * @Desc:
+ * @Desc: 接收上传的文件
  */
-public class MVCUploadFileUtils {
+public class UploadFileUtils {
 
-    private static final Logger logger = Logger.getLogger(MVCUploadFileUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 
     public static List<FileObject> saveUploadFile(HttpServletRequest request, String folderName, String allowFileSuffix) throws Exception {
         ArrayList list = new ArrayList();
 
         try {
             request.setCharacterEncoding("UTF-8");
+            HttpSession tsession = request.getSession();
+            ServletContext servletContext = tsession.getServletContext();
+
             CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
             if (multipartResolver.isMultipart(request)) {
-                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest)request;
+                MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
                 multiRequest.setCharacterEncoding("UTF-8");
                 Iterator<String> iter = multiRequest.getFileNames();
                 int year = DateTimeUtils.getNowYear();
                 int month = DateTimeUtils.getNowMonth();
                 int day = DateTimeUtils.getNowDay();
                 String pathFolder = "/" + year + "/" + month + "/" + day + "/";
-                boolean result = FileUtils.forceMkdir(folderName + pathFolder));
+                boolean result = FileUtils.newFolders(folderName + pathFolder);
                 if (result) {
                     logger.debug("Create file folder[" + folderName + pathFolder + "] success.");
                 }
 
-                while(iter.hasNext()) {
-                    MultipartFile multipartFile = multiRequest.getFile((String)iter.next());
+                while (iter.hasNext()) {
+                    MultipartFile multipartFile = multiRequest.getFile((String) iter.next());
                     if (multipartFile != null) {
-                        String myFileName = multipartFile.getOriginalFilename();
+                        String myFileName = ToPinyinUtils.ToPinyin(multipartFile.getOriginalFilename().replace(" ", "_"));
                         if (!myFileName.trim().isEmpty()) {
                             String fileExt = StringUtils.getFileExt(myFileName);
                             if (null != allowFileSuffix && allowFileSuffix.length() > 0 && !allowFileSuffix.toLowerCase().contains("." + fileExt.toLowerCase())) {
@@ -58,7 +64,7 @@ public class MVCUploadFileUtils {
                                 try {
                                     file.renameTo(new File(fileFullName));
                                 } catch (Exception var20) {
-                                    logger.error(var20);
+                                    logger.error(var20.getMessage());
                                     throw var20;
                                 }
 
